@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客服中心</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="brand-text">客服中心</span>
+        </div>
+        <div class="nav-right">
+            <button class="nav-btn">常见问题</button>
+            <button class="nav-btn">在线咨询</button>
+            <button class="nav-btn primary">提交工单</button>
+        </div>
+    </nav>
+
+    <!-- 主页横幅 -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>您好！需要什么帮助？</h1>
+            <div class="hero-buttons">
+                <button class="btn primary">立即咨询</button>
+                <button class="btn secondary">查看常见问题</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 快捷帮助区块 -->
+    <section class="quick-help">
+        <div class="help-card">
+            <div class="icon chat-icon"></div>
+            <h3>即时聊天</h3>
+            <p>与客服实时对话，快速解决问题</p>
+        </div>
+        <div class="help-card">
+            <div class="icon ticket-icon"></div>
+            <h3>提交请求</h3>
+            <p>填写详细信息，我们会尽快处理</p>
+        </div>
+        <div class="help-card">
+            <div class="icon kb-icon"></div>
+            <h3>知识库</h3>
+            <div class="search-box">
+                <input type="text" placeholder="搜索常见问题...">
+            </div>
+            <div class="tags">
+                <span class="tag">账户问题</span>
+                <span class="tag">订单状态</span>
+                <span class="tag">退款政策</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 浮动客服按钮 -->
+    <div class="float-button">
+        <div class="pulse"></div>
+        <span class="float-text">在线客服 平均响应<30秒</span>
+    </div>
+
+    <!-- 在 body 标签结束前添加以下代码 -->
+    <div class="chat-dialog" id="chatDialog">
+        <div class="chat-header">
+            <h3>在线客服</h3>
+            <button class="close-btn" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message system">
+                您好！我是智能客服助手，请问有什么可以帮您？
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="请输入您的问题...">
+            <button onclick="sendMessage()">发送</button>
+        </div>
+    </div>
+
+    <div class="faq-dialog" id="faqDialog">
+        <div class="chat-header">
+            <h3>常见问题</h3>
+            <button class="close-btn" onclick="toggleFAQ()">×</button>
+        </div>
+        <div class="faq-content">
+            <div class="faq-section">
+                <h2>一、订单与支付类</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Q1: 下单后如何修改收货地址/商品规格？</h3>
+                        <span class="expand-btn">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>✅ 解决方案：</p>
+                        <ul>
+                            <li>若订单状态为「待付款」：直接取消订单重新下单</li>
+                            <li>若已付款但未发货：立即联系在线客服（提供订单号）</li>
+                            <li>已发货订单：联系物流公司尝试拦截（需承担可能产生的运费）</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 其他问题项类似结构 -->
+            </div>
+            <!-- 其他分类类似结构 -->
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html> 
