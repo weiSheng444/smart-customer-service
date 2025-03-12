@@ -121,6 +121,25 @@ body {
     text-align: center;
 }
 
+.help-card h3 {
+    margin: 1rem 0;
+    color: var(--text);
+    font-size: 1.2rem;
+}
+
+.tags {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* 删除搜索框相关样式 */
+.search-box {
+    display: none;
+}
+
 /* 浮动按钮样式 */
 .float-button {
     position: fixed;
@@ -473,5 +492,430 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* 工单对话框样式 */
+.ticket-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    width: 90%;
+    max-width: 800px;
+    height: 85vh;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.ticket-dialog.active {
+    display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.ticket-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    background: #F8F9FD;
+}
+
+.ticket-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.form-group select,
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s;
+    background: #F8F9FD;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(46, 91, 255, 0.1);
+    outline: none;
+}
+
+.upload-area {
+    position: relative;
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: var(--primary);
+    background: rgba(46, 91, 255, 0.02);
+}
+
+.upload-area input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-hint {
+    color: var(--light-text);
+}
+
+.upload-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.upload-hint p {
+    margin: 0.5rem 0;
+    font-weight: 600;
+}
+
+.upload-hint span {
+    font-size: 0.9rem;
+}
+
+.file-list {
+    margin-top: 1rem;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: #F8F9FD;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.file-item .remove-file {
+    color: #FF4D4F;
+    cursor: pointer;
+}
+
+.form-footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.submit-btn {
+    padding: 1rem 3rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.submit-btn:hover {
+    background: #1D4AE8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(46, 91, 255, 0.2);
+}
+
+/* 政策对话框通用样式 */
+.policy-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    width: 90%;
+    max-width: 900px;
+    height: 85vh;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.policy-dialog.active {
+    display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.policy-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    background: #F8F9FD;
+}
+
+.policy-section {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.policy-item {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.policy-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.policy-item h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.policy-detail {
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* 订单状态流程样式 */
+.status-flow {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.status-flow::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 50px;
+    right: 50px;
+    height: 2px;
+    background: var(--border);
+    z-index: 1;
+}
+
+.status-item {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    flex: 1;
+}
+
+.status-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.status-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.status-table th,
+.status-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.status-table th {
+    background: var(--secondary);
+    font-weight: 600;
+}
+
+/* 退款政策样式 */
+.refund-card {
+    background: var(--secondary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.refund-card h4 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.refund-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.step-num {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    font-weight: bold;
+}
+
+/* 修改标签样式 */
+.tag {
+    padding: 0.5rem 1rem;
+    background: var(--secondary);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 账户问题标签悬停效果 */
+.tag:nth-child(1):hover {
+    background: #E8F0FF;
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(46, 91, 255, 0.15);
+}
+
+.tag:nth-child(1):hover::before {
+    content: '🔐';
+    margin-right: 4px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* 订单状态标签悬停效果 */
+.tag:nth-child(2):hover {
+    background: #FFF3E0;
+    color: #FF8E4F;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 142, 79, 0.15);
+}
+
+.tag:nth-child(2):hover::before {
+    content: '📦';
+    margin-right: 4px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* 退款政策标签悬停效果 */
+.tag:nth-child(3):hover {
+    background: #E8F5E9;
+    color: #4CAF50;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15);
+}
+
+.tag:nth-child(3):hover::before {
+    content: '💰';
+    margin-right: 4px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* 添加图标淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 添加点击效果 */
+.tag:active {
+    transform: scale(0.95);
+}
+
+/* 添加波纹效果 */
+.tag::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.tag:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(30, 30);
+        opacity: 0;
     }
 } 

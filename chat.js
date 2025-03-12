@@ -80,4 +80,70 @@ document.querySelectorAll('.faq-question').forEach(question => {
         const faqItem = question.parentElement;
         faqItem.classList.toggle('active');
     });
-}); 
+});
+
+// 添加工单相关函数
+function toggleTicket() {
+    const ticketDialog = document.getElementById('ticketDialog');
+    ticketDialog.classList.toggle('active');
+}
+
+// 绑定工单按钮点击事件
+document.querySelector('.nav-btn.primary').addEventListener('click', toggleTicket);
+document.querySelector('.help-card .ticket-icon').parentElement.addEventListener('click', toggleTicket);
+
+// 处理文件上传
+document.getElementById('fileUpload').addEventListener('change', function(e) {
+    const fileList = document.getElementById('fileList');
+    fileList.innerHTML = '';
+    
+    Array.from(this.files).forEach(file => {
+        if (file.size > 10 * 1024 * 1024) {
+            alert('文件大小不能超过10MB');
+            return;
+        }
+        
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        fileItem.innerHTML = `
+            <span>${file.name}</span>
+            <span class="remove-file">×</span>
+        `;
+        
+        fileItem.querySelector('.remove-file').addEventListener('click', () => {
+            fileItem.remove();
+        });
+        
+        fileList.appendChild(fileItem);
+    });
+});
+
+// 处理表单提交
+document.getElementById('ticketForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // 这里添加表单提交逻辑
+    alert('工单已提交，我们会尽快处理！');
+    this.reset();
+    toggleTicket();
+});
+
+// 添加标签页面切换函数
+function toggleAccount() {
+    const dialog = document.getElementById('accountDialog');
+    dialog.classList.toggle('active');
+}
+
+function toggleOrder() {
+    const dialog = document.getElementById('orderDialog');
+    dialog.classList.toggle('active');
+}
+
+function toggleRefund() {
+    const dialog = document.getElementById('refundDialog');
+    dialog.classList.toggle('active');
+}
+
+// 绑定标签点击事件
+document.querySelector('.tag:nth-child(1)').addEventListener('click', toggleAccount);
+document.querySelector('.tag:nth-child(2)').addEventListener('click', toggleOrder);
+document.querySelector('.tag:nth-child(3)').addEventListener('click', toggleRefund); 

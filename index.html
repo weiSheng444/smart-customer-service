@@ -46,9 +46,6 @@
         <div class="help-card">
             <div class="icon kb-icon"></div>
             <h3>知识库</h3>
-            <div class="search-box">
-                <input type="text" placeholder="搜索常见问题...">
-            </div>
             <div class="tags">
                 <span class="tag">账户问题</span>
                 <span class="tag">订单状态</span>
@@ -102,12 +99,338 @@
                         </ul>
                     </div>
                 </div>
-                <!-- 其他问题项类似结构 -->
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Q2: 支付失败怎么办？</h3>
+                        <span class="expand-btn">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>✅ 解决方案：</p>
+                        <ul>
+                            <li>检查网络连接是否正常</li>
+                            <li>确认银行卡余额充足</li>
+                            <li>确认支付限额是否超出</li>
+                            <li>尝试更换支付方式</li>
+                            <li>如仍无法解决，请联系银行客服</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Q3: 如何申请发票？</h3>
+                        <span class="expand-btn">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>✅ 操作步骤：</p>
+                        <ol>
+                            <li>登录账户进入"我的订单"</li>
+                            <li>找到需要开票的订单</li>
+                            <li>点击"申请发票"按钮</li>
+                            <li>填写发票信息（抬头、税号等）</li>
+                            <li>提交申请，1-3个工作日内开具</li>
+                        </ol>
+                        <p>注：电子发票将发送至注册邮箱</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Q4: 优惠券如何使用？</h3>
+                        <span class="expand-btn">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>✅ 使用说明：</p>
+                        <ul>
+                            <li>结算页面选择可用优惠券</li>
+                            <li>注意使用条件和有效期</li>
+                            <li>每笔订单限用一张优惠券</li>
+                            <li>部分商品可能不参与优惠</li>
+                            <li>优惠券不可叠加使用</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <!-- 其他分类类似结构 -->
         </div>
     </div>
 
+    <div class="ticket-dialog" id="ticketDialog">
+        <div class="chat-header">
+            <h3>提交工单</h3>
+            <button class="close-btn" onclick="toggleTicket()">×</button>
+        </div>
+        <div class="ticket-content">
+            <form id="ticketForm" class="ticket-form">
+                <div class="form-group">
+                    <label>问题类型</label>
+                    <select required>
+                        <option value="">请选择问题类型</option>
+                        <option value="order">订单问题</option>
+                        <option value="payment">支付问题</option>
+                        <option value="delivery">物流配送</option>
+                        <option value="refund">退款问题</option>
+                        <option value="product">商品问题</option>
+                        <option value="other">其他问题</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>问题描述</label>
+                    <textarea required placeholder="请详细描述您遇到的问题..." rows="5"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>订单号（选填）</label>
+                    <input type="text" placeholder="如果涉及订单，请填写订单号">
+                </div>
+                
+                <div class="form-group">
+                    <label>联系方式</label>
+                    <input type="tel" required placeholder="请输入您的手机号码">
+                </div>
+                
+                <div class="form-group">
+                    <label>上传附件</label>
+                    <div class="upload-area">
+                        <input type="file" id="fileUpload" multiple accept="image/*,.pdf">
+                        <div class="upload-hint">
+                            <i class="upload-icon">📎</i>
+                            <p>点击或拖拽文件到此处</p>
+                            <span>支持图片和PDF文件，最大10MB</span>
+                        </div>
+                    </div>
+                    <div id="fileList" class="file-list"></div>
+                </div>
+                
+                <div class="form-footer">
+                    <button type="submit" class="submit-btn">提交工单</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 账户问题对话框 -->
+    <div class="policy-dialog" id="accountDialog">
+        <div class="chat-header">
+            <h3>账户问题</h3>
+            <button class="close-btn" onclick="toggleAccount()">×</button>
+        </div>
+        <div class="policy-content">
+            <div class="policy-section">
+                <h2>账户注册与登录</h2>
+                <div class="policy-item">
+                    <h3>如何注册新账户？</h3>
+                    <div class="policy-detail">
+                        <p>1. 使用手机号注册</p>
+                        <ul>
+                            <li>点击右上角"注册"按钮</li>
+                            <li>输入手机号并获取验证码</li>
+                            <li>设置登录密码（8-20位字符）</li>
+                            <li>完善基本信息即可</li>
+                        </ul>
+                        <p>2. 第三方账号快捷注册</p>
+                        <ul>
+                            <li>支持微信一键登录</li>
+                            <li>支持支付宝账号授权</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="policy-item">
+                    <h3>账户安全设置</h3>
+                    <div class="policy-detail">
+                        <p>建议开启以下安全设置：</p>
+                        <ul>
+                            <li>登录密码：定期更换</li>
+                            <li>支付密码：设置独立密码</li>
+                            <li>手机验证：绑定常用手机</li>
+                            <li>双重认证：增加登录安全性</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="policy-item">
+                    <h3>忘记密码怎么办？</h3>
+                    <div class="policy-detail">
+                        <p>✅ 重置密码步骤：</p>
+                        <ol>
+                            <li>点击登录页面的"忘记密码"</li>
+                            <li>输入注册手机号获取验证码</li>
+                            <li>验证身份后设置新密码</li>
+                            <li>建议使用8-20位包含字母和数字的组合</li>
+                        </ol>
+                        <p>注：如无法接收验证码，请联系客服</p>
+                    </div>
+                </div>
+
+                <div class="policy-item">
+                    <h3>如何修改绑定手机号？</h3>
+                    <div class="policy-detail">
+                        <p>✅ 修改流程：</p>
+                        <ul>
+                            <li>登录账户进入安全中心</li>
+                            <li>选择"修改绑定手机"</li>
+                            <li>验证原手机号</li>
+                            <li>输入新手机号并验证</li>
+                            <li>修改成功后原手机号将解绑</li>
+                        </ul>
+                        <p>注意：修改后需重新绑定支付方式</p>
+                    </div>
+                </div>
+
+                <div class="policy-item">
+                    <h3>账户被锁定怎么办？</h3>
+                    <div class="policy-detail">
+                        <p>✅ 解锁方法：</p>
+                        <ul>
+                            <li>连续输错密码5次将触发锁定</li>
+                            <li>24小时后自动解锁</li>
+                            <li>或通过手机验证立即解锁</li>
+                            <li>建议开启双重认证提高安全性</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 订单状态对话框 -->
+    <div class="policy-dialog" id="orderDialog">
+        <div class="chat-header">
+            <h3>订单状态</h3>
+            <button class="close-btn" onclick="toggleOrder()">×</button>
+        </div>
+        <div class="policy-content">
+            <div class="policy-section">
+                <div class="status-flow">
+                    <div class="status-item">
+                        <div class="status-icon">1</div>
+                        <h4>待付款</h4>
+                        <p>订单已生成，等待付款</p>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-icon">2</div>
+                        <h4>待发货</h4>
+                        <p>付款成功，等待商家发货</p>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-icon">3</div>
+                        <h4>已发货</h4>
+                        <p>商品已发出，等待收货</p>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-icon">4</div>
+                        <h4>已完成</h4>
+                        <p>订单已完成，可评价</p>
+                    </div>
+                </div>
+                
+                <div class="policy-item">
+                    <h3>订单状态说明</h3>
+                    <div class="policy-detail">
+                        <table class="status-table">
+                            <tr>
+                                <th>状态</th>
+                                <th>说明</th>
+                                <th>可执行操作</th>
+                            </tr>
+                            <tr>
+                                <td>待付款</td>
+                                <td>订单保留24小时</td>
+                                <td>付款/取消订单</td>
+                            </tr>
+                            <tr>
+                                <td>待发货</td>
+                                <td>48小时内发货</td>
+                                <td>修改地址/申请退款</td>
+                            </tr>
+                            <tr>
+                                <td>已发货</td>
+                                <td>正在配送中</td>
+                                <td>查看物流/确认收货</td>
+                            </tr>
+                            <tr>
+                                <td>已完成</td>
+                                <td>交易已完成</td>
+                                <td>评价/申请售后</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 退款政策对话框 -->
+    <div class="policy-dialog" id="refundDialog">
+        <div class="chat-header">
+            <h3>退款政策</h3>
+            <button class="close-btn" onclick="toggleRefund()">×</button>
+        </div>
+        <div class="policy-content">
+            <div class="policy-section">
+                <div class="policy-item">
+                    <h3>退款规则</h3>
+                    <div class="policy-detail">
+                        <div class="refund-card">
+                            <h4>🕒 退款时效</h4>
+                            <ul>
+                                <li>未发货订单：1-3个工作日</li>
+                                <li>已发货订单：7-15个工作日</li>
+                                <li>仅退款：3个工作日内</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="refund-card">
+                            <h4>📦 退货要求</h4>
+                            <ul>
+                                <li>商品及包装保持完好</li>
+                                <li>不影响二次销售</li>
+                                <li>附带原始购物凭证</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="refund-card">
+                            <h4>❌ 不支持退款情况</h4>
+                            <ul>
+                                <li>人为损坏商品</li>
+                                <li>已使用或破损</li>
+                                <li>超过7天退换期</li>
+                                <li>定制类商品</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="policy-item">
+                    <h3>退款流程</h3>
+                    <div class="policy-detail">
+                        <div class="refund-steps">
+                            <div class="step">
+                                <span class="step-num">1</span>
+                                <p>提交申请</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-num">2</span>
+                                <p>商家审核</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-num">3</span>
+                                <p>退回商品</p>
+                            </div>
+                            <div class="step">
+                                <span class="step-num">4</span>
+                                <p>确认退款</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="chat.js"></script>
 </body>
-</html> 
+</html>
